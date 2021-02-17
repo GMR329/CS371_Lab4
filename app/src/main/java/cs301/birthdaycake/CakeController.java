@@ -18,22 +18,13 @@ public class CakeController implements View.OnClickListener, CompoundButton.OnCh
     public void onClick(View v) {
 //        Log.d("CakeController", "The implemented method was called!");
         //need to change text of the button
-        if(!cakeModel.litCandles) {
-            cakeModel.litCandles = true;
-            cakeView.invalidate();
-        }else{
-            cakeModel.litCandles = false;
-            cakeView.invalidate();
-        }
+        cakeModel.litCandles = !cakeModel.litCandles;
+        cakeView.invalidate();
     }
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if(isChecked){
-            cakeModel.hasCandles = true;
-        }else{
-            cakeModel.hasCandles = false;
-        }
+        cakeModel.hasCandles = !cakeModel.hasCandles;
         cakeView.invalidate();
     }
 
