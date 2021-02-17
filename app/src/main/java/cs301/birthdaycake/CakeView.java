@@ -34,6 +34,9 @@ public class CakeView extends SurfaceView {
     public static final float outerFlameRadius = 30.0f;
     public static final float innerFlameRadius = 15.0f;
 
+    //Need Cake Model
+    CakeModel cakeModel;
+
 
 
     /**
@@ -45,6 +48,9 @@ public class CakeView extends SurfaceView {
 
         //This is essential or your onDraw method won't get called
         setWillNotDraw(false);
+
+        //When CakeView is created must have CakeModel
+        cakeModel = new CakeModel();
 
         //Setup our palette
         cakePaint.setColor(0xFFC755B5);  //violet-red
@@ -62,6 +68,15 @@ public class CakeView extends SurfaceView {
 
         setBackgroundColor(Color.WHITE);  //better than black default
 
+    }
+
+    /**
+     * need to have cakeModel instance accessible
+     *
+     * @return CakeModel
+     */
+    public CakeModel getCakeModel(){
+        return cakeModel;
     }
 
     /**
