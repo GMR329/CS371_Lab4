@@ -7,7 +7,7 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.SurfaceView;
 
-public class CakeView extends SurfaceView {
+public class CakeView extends SurfaceView{
 
     /* These are the paints we'll use to draw the birthday cake below */
     Paint cakePaint = new Paint();
@@ -16,6 +16,8 @@ public class CakeView extends SurfaceView {
     Paint outerFlamePaint = new Paint();
     Paint innerFlamePaint = new Paint();
     Paint wickPaint = new Paint();
+
+    Paint balloonPaint = new Paint();
 
     /* These constants define the dimensions of the cake.  While defining constants for things
         like this is good practice, we could be calculating these better by detecting
@@ -34,9 +36,12 @@ public class CakeView extends SurfaceView {
     public static final float outerFlameRadius = 30.0f;
     public static final float innerFlameRadius = 15.0f;
 
+    public static final float balloonHeight = 70.0f;
+    public static final float balloonWidth = balloonHeight * 0.7f;
+
+
     //Need Cake Model
     CakeModel cakeModel;
-
 
 
     /**
@@ -67,6 +72,7 @@ public class CakeView extends SurfaceView {
         wickPaint.setStyle(Paint.Style.FILL);
 
         setBackgroundColor(Color.WHITE);  //better than black default
+        balloonPaint.setColor(Color.BLUE);
 
     }
 
@@ -114,6 +120,13 @@ public class CakeView extends SurfaceView {
         }
     }
 
+    public void drawBalloon(Canvas canvas){
+        canvas.drawOval(cakeModel.balloonCX - balloonWidth/2, cakeModel.balloonCY - balloonHeight/2,
+                cakeModel.balloonCX + balloonWidth/2, cakeModel.balloonCY + balloonHeight/2, balloonPaint);
+        canvas.drawLine(cakeModel.balloonCX, cakeModel.balloonCY + balloonHeight/2, cakeModel.balloonCX,
+                cakeModel.balloonCY + balloonHeight, balloonPaint);
+    }
+
     /**
      * onDraw is like "paint" in a regular Java program.  While a Canvas is
      * conceptually similar to a Graphics in javax.swing, the implementation has
@@ -152,6 +165,10 @@ public class CakeView extends SurfaceView {
 //            drawCandle(canvas, cakeLeft + cakeWidth/3 - candleWidth/2, cakeTop);
 //            drawCandle(canvas, cakeLeft + cakeWidth*2/3 - candleWidth/2, cakeTop);
             drawCandles(canvas, cakeModel.numCandles + 1);
+        }
+
+        if(cakeModel.balloonCX >= 0 && cakeModel.balloonCY >= 0){
+            drawBalloon(canvas);
         }
 
 

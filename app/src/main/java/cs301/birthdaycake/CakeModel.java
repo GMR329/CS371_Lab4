@@ -7,4 +7,7 @@ public class CakeModel {
     public boolean frosting = true;
     public boolean hasCandles = true;
 
+    public float balloonCX = -1f;
+    public float balloonCY = -1f;
+
 }
