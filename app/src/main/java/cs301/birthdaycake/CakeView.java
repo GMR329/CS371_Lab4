@@ -35,8 +35,6 @@ public class CakeView extends SurfaceView{
     public static final float wickWidth = 6.0f;
     public static final float outerFlameRadius = 30.0f;
     public static final float innerFlameRadius = 15.0f;
-    public int x;
-    public int y;
     Paint paint = new Paint();
 
     public static final float balloonHeight = 70.0f;
@@ -172,7 +170,7 @@ public class CakeView extends SurfaceView{
 //            drawCandle(canvas, cakeLeft + cakeWidth*2/3 - candleWidth/2, cakeTop);
             drawCandles(canvas, cakeModel.numCandles + 1);
         }
-        String xyLoc = Integer.toString(x) + ", " + Integer.toString(y);
+        String xyLoc = Integer.toString(cakeModel.x) + ", " + Integer.toString(cakeModel.y);
         canvas.drawText(xyLoc, getWidth()-150, getHeight()-100, paint);
 
         if(cakeModel.balloonCX >= 0 && cakeModel.balloonCY >= 0){

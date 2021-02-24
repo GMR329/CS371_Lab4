@@ -49,8 +49,8 @@ public class CakeController implements View.OnClickListener, CompoundButton.OnCh
         cakeModel.balloonCX = event.getX();
         cakeModel.balloonCY = event.getY();
 
-        cakeView.x = (int) event.getX();
-        cakeView.y = (int) event.getY();
+        cakeModel.x = (int) event.getX();
+        cakeModel.y = (int) event.getY();
 
         cakeView.invalidate();
 
