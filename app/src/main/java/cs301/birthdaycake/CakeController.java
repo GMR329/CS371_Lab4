@@ -12,10 +12,10 @@ public class CakeController implements View.OnClickListener, CompoundButton.OnCh
     private CakeView cakeView;
     private CakeModel cakeModel;
 
-    public CakeController(CakeView cakeView){
-            this.cakeView = cakeView;
-            this.cakeModel = cakeView.getCakeModel();
-            cakeView.setOnTouchListener(this);
+    public CakeController(CakeView cakeView) {
+        this.cakeView = cakeView;
+        this.cakeModel = cakeView.getCakeModel();
+        cakeView.setOnTouchListener(this);
     }
 
     @Override
@@ -48,8 +48,13 @@ public class CakeController implements View.OnClickListener, CompoundButton.OnCh
     public boolean onTouch(View v, MotionEvent event) {
         cakeModel.balloonCX = event.getX();
         cakeModel.balloonCY = event.getY();
+
+        cakeView.x = (int) event.getX();
+        cakeView.y = (int) event.getY();
+
         cakeView.invalidate();
 
         return true;
     }
+
 }
